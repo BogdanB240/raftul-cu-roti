@@ -24,6 +24,12 @@ export default function Home() {
     }
   };
 
+  const handleLogout = () => {
+    setUserType(null);
+    setEmail("");
+    setPassword("");
+  };
+
   const handleAddAnvelopa = () => {
     setAnvelope([...anvelope, form]);
     setForm({ marca: "", dimensiune: "", sezon: "", stare: "", pozitie: "", observatii: "" });
@@ -33,6 +39,7 @@ export default function Home() {
     return (
       <main style={{ padding: "2rem", fontFamily: "sans-serif", background: "#ebf8ff" }}>
         <h1 style={{ color: "#1e40af", fontSize: "2rem" }}>Panou Administrator</h1>
+        <button onClick={handleLogout} style={{ marginBottom: "1rem" }}>Logout</button>
         <p>Adaugă un set de anvelope:</p>
         <div style={{ maxWidth: "600px", marginTop: "1rem" }}>
           <input placeholder="Marca" value={form.marca} onChange={(e) => setForm({ ...form, marca: e.target.value })} />
@@ -51,6 +58,7 @@ export default function Home() {
     return (
       <main style={{ padding: "2rem", fontFamily: "sans-serif", background: "#ebf8ff" }}>
         <h1 style={{ color: "#1e40af", fontSize: "2rem" }}>Cont Client</h1>
+        <button onClick={handleLogout} style={{ marginBottom: "1rem" }}>Logout</button>
         <p>Anvelope salvate:</p>
         {anvelope.length === 0 && <p>Nu ai anvelope salvate.</p>}
         {anvelope.map((a, i) => (
